@@ -1,0 +1,8 @@
+<div class="desserts content">
+  <% desserts.forEach(dessert => { %>
+  <h3><%= dessert.name %></h3>
+  <p><%= dessert.description %></p>
+  <p>$<%= dessert.price %></p>
+  <img src="<%= dessert.image_url %>" alt="<%= dessert.name %> image" />
+  <% }); %>
+</div>
