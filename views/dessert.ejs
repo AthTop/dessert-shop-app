@@ -1,0 +1,16 @@
+<%- include("partials/header", { title }) %> <%- include("partials/desserts", {
+desserts, single }) %>
+<button id="delete-dessert">Delete</button>
+
+<script>
+  const deleteBtnClick = () => {
+    const location = window.location.href;
+    alert("Are you sure?");
+    fetch(location, {
+      method: "DELETE",
+    });
+  };
+
+  const delBtn = document.querySelector("#delete-dessert");
+  delBtn.addEventListener("click", deleteBtnClick);
+</script>

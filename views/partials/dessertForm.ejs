@@ -1,0 +1,26 @@
+<form action="/add" method="POST">
+  <fieldset>
+    <legend>Dessert</legend>
+    <label for="name">Dessert Name</label>
+    <input type="text" id="name" name="name" required />
+    <label for="price">Price</label>
+    <input type="text" id="price" name="price" required />
+    <label for="description">Description</label>
+    <textarea name="description" id="description"></textarea>
+    <label for="imageurl">Image Link</label>
+    <input type="text" name="imageurl" id="imageurl" />
+  </fieldset>
+  <fieldset>
+    <legend>Categories</legend>
+    <% categories.forEach(category => { %>
+    <input
+      type="checkbox"
+      name="categories[]"
+      id="category<%= category.id %>"
+      value="<%= category.id %>"
+    />
+    <label for="category<%= category.id %>"><%= category.name %></label>
+    <% }); %>
+  </fieldset>
+  <button type="submit">Add new dessert</button>
+</form>

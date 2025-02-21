@@ -36,7 +36,7 @@ const getUncategorizedDesserts = async () => {
   return rows;
 };
 
-// Handle getting desserts that aren't uncategorized 
+// Handle getting desserts that aren't uncategorized
 const getDessertsByCategory = async (catId) => {
   const { rows } = await pool.query(
     `SELECT * 
@@ -48,10 +48,54 @@ const getDessertsByCategory = async (catId) => {
   return rows;
 };
 
+//Add new dessert to DB and assign it default category of 1 for uncategorized
+const postDessert = async (name, price, description, image_url) => {
+  const { rows } = await pool.query(
+    `
+    WITH inserted_dessert AS (
+        INSERT INTO dessert(name, price, description, image_url) 
+        VALUES ($1, $2, $3, $4)
+        RETURNING id;
+    )
+    INSERT INTO dessert_category(dessert_id, category_id)
+    SELECT id, 1 FROM inserted_dessert
+    RETURNING dessert_id;
+    `,
+    [name, price, description, image_url]
+  );
+  return rows;
+};
+
+const postNewRelation = async (dessert_id, category_id) => {
+  await pool.query(
+    `
+    INSERT INTO dessert_category(dessert_id, category_id)
+    VALUES ($1, $2)
+    ON CONFLICT(dessert_id, category_id)
+    DO NOTHING;
+    `,
+    [dessert_id, category_id]
+  );
+};
+
+const getDessertById = async (id) => {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM dessert
+    WHERE id = $1
+    `,
+    [id]
+  );
+  return rows;
+};
+
 module.exports = {
   getAllDesserts,
   getAllCategories,
   getCategoryById,
   getDessertsByCategory,
-  getUncategorizedDesserts
+  getUncategorizedDesserts,
+  postDessert,
+  postNewRelation,
+  getDessertById,
 };

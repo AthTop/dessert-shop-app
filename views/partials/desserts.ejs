@@ -1,8 +1,14 @@
 <div class="desserts content">
-  <% desserts.forEach(dessert => { %>
-  <h3><%= dessert.name %></h3>
-  <p><%= dessert.description %></p>
-  <p>$<%= dessert.price %></p>
-  <img src="<%= dessert.image_url %>" alt="<%= dessert.name %> image" />
-  <% }); %>
+  <% desserts.forEach(dessert => { %> <% if(!single) { %>
+  <a href="dessert/<%= dessert.id %>">
+    <% } %>
+    <div class="dessert">
+      <h3><%= dessert.name %></h3>
+      <p><%= dessert.description %></p>
+      <p>$<%= dessert.price %></p>
+      <img src="<%= dessert.image_url %>" alt="<%= dessert.name %> image" />
+    </div>
+    <% }); %> <% if(!single) { %>
+  </a>
+  <% } %>
 </div>
