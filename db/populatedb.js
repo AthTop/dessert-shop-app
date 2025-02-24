@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS category (
 );
 
 CREATE TABLE IF NOT EXISTS dessert_category (
-    dessert_id INTEGER REFERENCES dessert(id),
+    dessert_id INTEGER REFERENCES dessert(id) ON DELETE CASCADE,
     category_id INTEGER REFERENCES category(id),
     CONSTRAINT pk_dessert_category PRIMARY KEY(dessert_id, category_id)
 );
@@ -43,6 +43,7 @@ const drop = `DROP TABLE dessert_category, dessert, category;`;
 
 const main = async () => {
   console.log("Creating and populating db...");
+  console.log(process.env.DATABASE_URL)
   const client = new Client({ connectionString: process.env.DATABASE_URL });
   await client.connect();
   await client.query(SQL);

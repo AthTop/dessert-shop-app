@@ -55,11 +55,11 @@ const postDessert = async (name, price, description, image_url) => {
     WITH inserted_dessert AS (
         INSERT INTO dessert(name, price, description, image_url) 
         VALUES ($1, $2, $3, $4)
-        RETURNING id;
+        RETURNING id
     )
     INSERT INTO dessert_category(dessert_id, category_id)
     SELECT id, 1 FROM inserted_dessert
-    RETURNING dessert_id;
+    RETURNING dessert_id AS id;
     `,
     [name, price, description, image_url]
   );
@@ -89,6 +89,16 @@ const getDessertById = async (id) => {
   return rows;
 };
 
+const deleteDessertById = async (id) => {
+  await pool.query(
+    `
+    DELETE FROM dessert
+    WHERE id = $1;
+    `,
+    [id]
+  );
+};
+
 module.exports = {
   getAllDesserts,
   getAllCategories,
@@ -98,4 +108,5 @@ module.exports = {
   postDessert,
   postNewRelation,
   getDessertById,
+  deleteDessertById,
 };

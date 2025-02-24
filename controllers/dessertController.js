@@ -13,11 +13,9 @@ exports.getController = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    res.status(500).render("error", {
+      status: 500,
+      error: "Internal server error",
+    });
   }
-};
-
-exports.deleteController = async (req, res) => {
-  const { id } = req.params;
-  console.log(id);
 };

@@ -20,7 +20,7 @@ exports.postController = async (req, res) => {
       }
     }
     res.redirect("/");
-  } catch(error) {
-    console.log(error);
+  } catch (error) {
+    res.status(500).render("error", { status: 500, error: "Internal server error" });
   }
 };

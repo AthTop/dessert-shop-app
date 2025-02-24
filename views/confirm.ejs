@@ -1,0 +1,13 @@
+<%- include("partials/header", { title }) %>
+<body>
+    <h1>Are you sure you want to delete the dessert?</h1>
+    <form action="/delete/<%= id %>" method="POST">
+        <% if(locals.error) { %>
+            <p> <%= locals.error %></p>
+        <% } %>  
+        <label for="password">Enter password:</label>
+        <input type="text" name="password" id="password">
+        <button>Confirm</button>
+    </form>
+</body>
+</html>
