@@ -99,6 +99,43 @@ const deleteDessertById = async (id) => {
   );
 };
 
+const getDessertCategories = async (id) => {
+  const { rows } = await pool.query(
+    `
+    SELECT category_id FROM dessert_category
+    WHERE dessert_id = $1
+    `,
+    [id]
+  );
+  return rows;
+};
+
+const updateDessertById = async (id, name, price, description, image_url) => {
+  const { rows } = await pool.query(
+    `
+    UPDATE dessert
+    SET name = $1,
+        price = $2,
+        description = $3,
+        image_url = $4
+    WHERE id = $5
+    RETURNING *;
+    `,
+    [name, price, description, image_url, id]
+  );
+  return rows;
+};
+
+const deleteDessertCategoryById = async (id) => {
+  await pool.query(
+    `
+    DELETE FROM dessert_category
+    WHERE dessert_id = $1;
+    `,
+    [id]
+  );
+};
+
 module.exports = {
   getAllDesserts,
   getAllCategories,
@@ -109,4 +146,7 @@ module.exports = {
   postNewRelation,
   getDessertById,
   deleteDessertById,
+  getDessertCategories,
+  updateDessertById,
+  deleteDessertCategoryById,
 };

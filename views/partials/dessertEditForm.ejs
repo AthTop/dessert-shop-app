@@ -1,0 +1,27 @@
+<form action="/edit/<%= dessert.id %>" method="POST">
+  <fieldset>
+    <legend>Dessert</legend>
+    <label for="name">Dessert Name</label>
+    <input type="text" id="name" name="name" value="<%= dessert.name %>" required />
+    <label for="price">Price</label>
+    <input type="text" id="price" name="price" value="<%= dessert.price %>" required />
+    <label for="description">Description</label>
+    <textarea name="description" id="description">
+<%= dessert.description %></textarea>
+    <label for="imageurl">Image Link</label>
+    <input type="text" name="imageurl" id="imageurl" value="<%= dessert.image_url %>" />
+  </fieldset>
+  <fieldset>
+    <legend>Categories</legend>
+    <% categories.forEach(category => { %> <input type="checkbox" name="categories[]" id="category<%= category.id %>" value="<%= category.id
+    %>" <%= dessertCategoriesIds.has(category.id) ? "checked" : "" %> />
+    <label for="category<%= category.id %>"><%= category.name %></label>
+    <% }); %>
+  </fieldset>
+  <% if(locals.error) { %>
+  <p><%= locals.error %></p>
+  <% } %>
+  <label for="password">Enter password: </label>
+  <input type="text" name="password" id="password" required />
+  <button type="submit">Save changes</button>
+</form>
