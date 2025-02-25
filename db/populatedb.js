@@ -21,10 +21,10 @@ CREATE TABLE IF NOT EXISTS dessert_category (
     CONSTRAINT pk_dessert_category PRIMARY KEY(dessert_id, category_id)
 );
 
-INSERT INTO dessert(name, description, price) VALUES 
-('Chocolate Cake', 'Delicious chocolate cake', 5.5), 
-('Chocolate Ice Cream', 'Fluffy cold chocolate ice cream', 2.10), 
-('Apple Candy', 'Glistening crunchy and sweet candy apple', 1.30);
+INSERT INTO dessert(name, description, price, image_url) VALUES 
+('Chocolate Cake', 'Delicious chocolate cake', 5.5, 'https://www.piesandtacos.com/wp-content/uploads/2024/04/chocolate-birthday-cake-scaled.jpg'), 
+('Chocolate Ice Cream', 'Fluffy cold chocolate ice cream', 2.10, 'https://www.cravethegood.com/wp-content/uploads/2021/04/sous-vide-chocolate-ice-cream-15-1366x2048.jpg'), 
+('Apple Candy', 'Glistening crunchy and sweet candy apple', 1.30, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFjXfggn18J6vKRNUAC90rwfdDpr4DAJGDiw&s');
 
 INSERT INTO category(name) VALUES 
 ('Uncategorized'), 
