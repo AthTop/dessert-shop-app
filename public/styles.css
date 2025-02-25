@@ -92,16 +92,24 @@ li {
   gap: 5px;
 }
 
+.dessert-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
 .desserts.content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: auto;
 }
 
 .dessert {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  line-height: 0.5;
   border: 1px solid #ffdab9;
   display: flex;
   flex-direction: column;
@@ -115,9 +123,9 @@ li {
 }
 
 .dessert img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  max-width: 50%;
+  max-width: 40%;
   border-radius: 12px;
 }
 
@@ -131,14 +139,6 @@ li {
 
 .dessert-buttons a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-.dessert-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
 }
 
 .dessertForm {

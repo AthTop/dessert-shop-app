@@ -1,0 +1,5 @@
+<form action="/category" method="POST" class="dessertForm">
+    <label for="catName">Category Name: </label>
+    <input type="text" name="catName" id="catName" value="<%= locals.catName && locals.catName %>" required>
+    <button type="submit">Add category</button>
+</form>

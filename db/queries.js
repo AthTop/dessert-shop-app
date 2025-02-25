@@ -136,6 +136,16 @@ const deleteDessertCategoryById = async (id) => {
   );
 };
 
+const postCategory = async (name) => {
+  await pool.query(
+    `
+    INSERT INTO category(name)
+    VALUES ($1);
+    `,
+    [name]
+  );
+};
+
 module.exports = {
   getAllDesserts,
   getAllCategories,
@@ -149,4 +159,5 @@ module.exports = {
   getDessertCategories,
   updateDessertById,
   deleteDessertCategoryById,
+  postCategory,
 };
