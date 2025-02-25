@@ -1,9 +1,9 @@
 <%- include("partials/header", { title }) %>
 
 <body>
-  <%- include('partials/categories') %>
-  <%- include('partials/desserts') %>
-  <a href="/add">New dessert</a>
+  <%- include('partials/nav') %>
+  <div class="content-container">
+    <%- include('partials/categories', { categories }) %> <%-
+    include('partials/desserts') %> 
+  </div>
 </body>
-
-</html>

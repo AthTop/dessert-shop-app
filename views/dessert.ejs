@@ -1,4 +1,10 @@
-<%- include("partials/header", { title }) %> <%- include("partials/desserts", {
-desserts, single }) %>
-<a href="/delete/<%= desserts[0].id %>">Delete Dessert</a>
-<a href="/edit/<%= desserts[0].id %>">Edit Dessert</a>
+<%- include("partials/header", { title }) %>
+<%- include("partials/nav") %> 
+<div class="dessert-container">
+    <%- include("partials/desserts", { desserts,
+  single }) %>
+  <div class="dessert-buttons">
+    <a href="/delete/<%= desserts[0].id %>">Delete Dessert</a>
+    <a href="/edit/<%= desserts[0].id %>">Edit Dessert</a>
+  </div>
+</div>

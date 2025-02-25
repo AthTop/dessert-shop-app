@@ -1,3 +1,6 @@
 <%- include("partials/header", { title: status }) %>
-<h1><%= status %> <%= error %></h1>
-<a href="/">Click here to go back!</a>
+<%- include('partials/nav') %>
+<div class="error">
+  <h1><%= status %> <%= error %></h1>
+  <a href="/">Click here to go back!</a>
+</div>
