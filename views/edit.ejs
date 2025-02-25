@@ -2,5 +2,6 @@
 
 <body>
   <%- include('partials/nav') %>
-  <%- include("partials/dessertEditForm"), { dessert, categories, dessertCategoriesIds, error } %>
+  <%- include('partials/errors') %>
+  <%- include("partials/dessertEditForm"), { dessert, categories, dessertCategoriesIds } %>
 </body>
